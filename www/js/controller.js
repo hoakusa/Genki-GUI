@@ -1,6 +1,6 @@
 angular.module('instagram.controller', ['instagram.services', 'angularMoment'])
 
-.controller('AppCtrl', function($scope, $state, $ionicPopup, AuthService) {
+.controller('AppCtrl', function($scope, $state, $ionicPopup, $ionicSideMenuDelegate, AuthService) {
 
     AuthService.checkAuth().then(function (res) {
         AuthService.user = res.user;
@@ -12,6 +12,10 @@ angular.module('instagram.controller', ['instagram.services', 'angularMoment'])
         AuthService.destroyUserCredentials();
         $state.go('login', {}, {reload: true});
     });
+
+    $scope.toggleLeftSideMenu = function() {
+        $ionicSideMenuDelegate.toggleLeft();
+    };
 
 })
 
@@ -37,6 +41,7 @@ angular.module('instagram.controller', ['instagram.services', 'angularMoment'])
 .controller('LoginCtrl', function($scope, $state, $ionicPopup, AuthService) {
     $scope.user = {email: "", password: ""};
 
+    // local
     $scope.login = function() {
         AuthService.login($scope.user).then(function (res) {
             AuthService.user = res.user;
@@ -54,7 +59,47 @@ angular.module('instagram.controller', ['instagram.services', 'angularMoment'])
                 template: err.message
             });
         });
-    }
+    };
+
+    // login Facebook
+    $scope.loginFacebook = function() {
+        AuthService.loginFacebook().then(function (res) {
+            AuthService.user = res.user;
+            console.log(res.user);
+            console.log(AuthService.user);
+
+            $state.go('app.home', {}, {reload: true});
+            var alertPopup = $ionicPopup.alert({
+                title: 'Register successfully!',
+                template: 'Hello, ' + res.user.username + "!"
+            });
+        }, function(err) {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Login failed!',
+                template: err.message
+            });
+        });
+    };
+
+    // loginTwitter
+    $scope.loginTwitter = function() {
+        AuthService.loginTwitter().then(function (res) {
+            AuthService.user = res.user;
+            console.log(res.user);
+            console.log(AuthService.user);
+
+            $state.go('app.home', {}, {reload: true});
+            var alertPopup = $ionicPopup.alert({
+                title: 'Register successfully!',
+                template: 'Hello, ' + res.user.username + "!"
+            });
+        }, function(err) {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Login failed!',
+                template: err.message
+            });
+        });
+    };
 })
 
 .controller('HomeCtrl', function($scope, $state, $ionicPopup, PostService, UserService, AuthService) {

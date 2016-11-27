@@ -1,4 +1,4 @@
-<ion-tabs class="tabs-icon-only tabs-color-active-positive">
+<!--<ion-tabs class="tabs-icon-only tabs-color-active-positive">
 
     <ion-tab icon-off="icon ion-ios-home-outline" icon-on="ion-ios-home" href="#/app/home">
         <ion-nav-view name="app-home"></ion-nav-view>
@@ -16,8 +16,75 @@
         <ion-nav-view name="app-activity"></ion-nav-view>
     </ion-tab> -->
 
-    <ion-tab icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/app/account">
+    <!--<ion-tab icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/app/account">
         <ion-nav-view name="app-account"></ion-nav-view>     
     </ion-tab>
 
-</ion-tabs>
+</ion-tabs>-->
+
+<ion-side-menus>
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+        <div class="bar bar-header bar-light">
+            <h1 class="title">bar-light</h1>
+        </div>
+        <div class="list">
+
+        <a class="item item-icon-left" href="#">
+            <i class="icon ion-email"></i>
+            Check me now
+            <span class="badge badge-assertive">1</span>
+        </a>
+
+        <a class="item item-icon-left" href="#">
+            <i class="icon ion-email"></i>
+            Graph
+            <span class="badge badge-assertive">1</span>
+        </a>
+
+        <a class="item item-icon-left" href="#">
+            <i class="icon ion-email"></i>
+            Exercise
+            <span class="badge badge-assertive">1</span>
+        </a>
+
+        <a class="item item-icon-left" href="#">
+            <i class="icon ion-email"></i>
+            Hospital record
+            <span class="badge badge-assertive">1</span>
+        </a>
+
+        <a class="item item-icon-left" href="#">
+            <i class="icon ion-email"></i>
+            Calendar
+            <span class="badge badge-assertive">1</span>
+        </a>
+
+        <a class="item item-icon-left" href="#">
+            <i class="icon ion-email"></i>
+            Guideline
+            <span class="badge badge-assertive">1</span>
+        </a>
+
+        </div>
+
+    </ion-side-menu>
+
+    <ion-side-menu-content>
+        <div class="bar bar-header bar-light">
+
+            <button class="button icon ion-navicon button-clear" ng-click="toggleLeftSideMenu()"></button>
+
+            <h1 class="title">Genki</h1>
+        </div>  
+
+        <ion-nav-view name="app-home"></ion-nav-view>
+        
+    </ion-side-menu-content>
+
+    <!-- Right menu -->
+    <!--<ion-side-menu side="right">
+        Right Menu
+    </ion-side-menu>-->
+
+</ion-side-menus>

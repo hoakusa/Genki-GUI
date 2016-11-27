@@ -1,4 +1,7 @@
-/* Empty. Add your own CSS if you like */
+.main-content {
+    margin-top: 44px;
+}
+
 a {
     text-decoration: none;
 }
@@ -7,9 +10,13 @@ a:hover, a:focus {
     text-decoration: none;
 }
 
-.main-content {
-    margin-top: 44px;
+.home h4 {
+    text-align: center;
 }
+
+/*
+
+
 
 .tabs-striped > .tab-nav.tabs > .tabs-bottom.tabs-standard > .tab-nav.tabs {
     display: none;
@@ -69,10 +76,6 @@ a:hover, a:focus {
 .button.button-positive.button-outline.activated .ion-plus:before,
 .button.button-positive.button-outline.checked .ion-plus:before {
     content: "\f122";
-}
-
-.padding {
-    /*margin-top: 40px;*/
 }
 
 .account .tabs-striped .tab-item.tab-item-active,
@@ -141,4 +144,4 @@ form .icon {
 
 .tab-item .icon {
     margin-top: 6px;
-}
+}*/

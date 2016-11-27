@@ -2,7 +2,7 @@ angular.module('instagram.services', ['ionic', 'instagram.constant'])
 
 .factory('AuthService', function($q, $http, URL) {
     var LOCAL_TOKEN_KEY = 'localToken';
-    var LOCAL_USER_KEY  = 'Instagram User';
+    var LOCAL_USER_KEY  = 'GenKi User';
     var isAuthenticated = false;
 
     var loadUserCredentials = function() {
@@ -40,9 +40,43 @@ angular.module('instagram.services', ['ionic', 'instagram.constant'])
 
     var login = function(data) {
         return $q(function (resolve, reject) {
-
+            // check xem response tra nhu nao de thay user va token
             $http.post(URL.base + URL.authenticate, data)
                 .success(function (res) {
+                    this.user = res.user;
+                    console.log(res.user);
+                    storeUserCredentials(res.token, res.user);
+                    resolve(res);
+                })
+                .error(function (err) {
+                    reject(err);
+                });
+        });        
+    }
+
+    var loginFacebook = function(data) {
+        return $q(function (resolve, reject) {
+
+            $http.post(URL.loginFacebook)
+                .success(function (res) {
+                    // Check xem no response nhu nao ma sua nhe
+                    this.user = res.user;
+                    console.log(res.user);
+                    storeUserCredentials(res.token, res.user);
+                    resolve(res);
+                })
+                .error(function (err) {
+                    reject(err);
+                });
+        });        
+    }
+
+    var loginTwitter = function(data) {
+        return $q(function (resolve, reject) {
+
+            $http.post(URL.loginTwitter)
+                .success(function (res) {
+                    // Check xem no response nhu nao ma sua nhe
                     this.user = res.user;
                     console.log(res.user);
                     storeUserCredentials(res.token, res.user);
@@ -90,6 +124,8 @@ angular.module('instagram.services', ['ionic', 'instagram.constant'])
 
     return {
         login: login,
+        loginFacebook: loginFacebook,
+        loginTwitter: loginTwitter,
         logout: logout,
         register: register,
         checkAuth: checkAuth,

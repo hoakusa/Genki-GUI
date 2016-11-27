@@ -6,6 +6,8 @@ angular.module('instagram.constant', [])
 
     authenticate: '/api/user/auth',
     register: '/api/user',
+    loginFacebook: '',
+    loginTwitter: '',
     user: '/api/user',
     searchUser: '/api/search/user',
 
