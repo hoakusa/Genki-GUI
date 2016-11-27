@@ -1,0 +1,26 @@
+<ion-view>
+	<div class="bar bar-header bar-positive">
+        <h1 class="title">Camera</h1>
+    </div>
+
+	<ion-content class="main-content">
+	    <div class="list card pick-image">
+	        <div class="item">
+	            <button class="button button-block button-balanced icon-right ion-social-instagram-outline" ng-click="camera()">Use Camera</button>
+	            <button class="button button-block button-assertive icon-right ion-images" ng-click="pick()">Open Gallery</button>
+	            <img ng-src="{{image}}" class="full-image" id="myImage"/>
+	        </div>
+
+	        <label class="item item-input item-stacked-label">
+	            <span class="input-label">Caption</span>
+	            <textarea placeholder="Add description" ng-model="data.caption"></textarea>
+	        </label>
+
+	        <div class="item">
+	            <button ng-click="post()" ng-hide="!isPick()" class="button button-block button-positive icon-right ion-android-upload">
+	                Upload image
+	            </button>
+	        </div>
+	    </div>
+	</ion-content>
+</ion-view>
